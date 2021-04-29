@@ -26,6 +26,7 @@ PGP_FIELDS = EMAIL_PGP_FIELDS + (
     fields.TextPGPSymmetricKeyField,
     fields.BooleanPGPPublicKeyField,
     fields.BooleanPGPSymmetricKeyField,
+    fields.JSONPGPPublicKeyField,
 )
 
 
@@ -105,7 +106,8 @@ class TestEncryptedTextFieldModel(TestCase):
             'float_pgp_sym_field',
             'boolean_pgp_pub_field',
             'boolean_pgp_sym_field',
-            'fk_model',
+            'json_pgp_pub_field'
+,            'fk_model',
         )
         self.assertCountEqual(fields, expected)
 
@@ -479,6 +481,20 @@ class TestEncryptedTextFieldModel(TestCase):
             cleaned_data['time_pgp_pub_field'],
             expected
         )
+
+    def test_json_pgp_pub_field(self):
+        """Test JSONPGPPublicKeyField."""
+
+        expected = {'test': 'test'}
+
+        EncryptedModelFactory.create(json_pgp_pub_field=expected)
+
+        instance = EncryptedModel.objects.get()
+
+        self.assertIsInstance(instance.json_pgp_pub_field, dict)
+
+        self.assertEqual(instance.json_pgp_pub_field, {'test': 'test'})
+
 
     def test_pgp_public_key_char_field(self):
         """Test public key CharField."""

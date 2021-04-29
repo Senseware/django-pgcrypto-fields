@@ -42,7 +42,7 @@ class EncryptedModel(models.Model):
     )
     float_pgp_pub_field = fields.FloatPGPPublicKeyField(blank=True, null=True)
     boolean_pgp_pub_field = fields.BooleanPGPPublicKeyField(blank=True, null=True)
-
+    json_pgp_pub_field = fields.JSONPGPPublicKeyField(blank=True, null=True)
     email_pgp_sym_field = fields.EmailPGPSymmetricKeyField(blank=True, null=True)
     integer_pgp_sym_field = fields.IntegerPGPSymmetricKeyField(blank=True, null=True)
     biginteger_pgp_sym_field = fields.BigIntegerPGPSymmetricKeyField(
