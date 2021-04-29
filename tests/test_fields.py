@@ -106,8 +106,8 @@ class TestEncryptedTextFieldModel(TestCase):
             'float_pgp_sym_field',
             'boolean_pgp_pub_field',
             'boolean_pgp_sym_field',
-            'json_pgp_pub_field'
-,            'fk_model',
+            'json_pgp_pub_field',
+            'fk_model',
         )
         self.assertCountEqual(fields, expected)
 
@@ -483,7 +483,7 @@ class TestEncryptedTextFieldModel(TestCase):
         )
 
     def test_json_pgp_pub_field(self):
-        """Test JSONPGPPublicKeyField."""
+        """Test public key JSONField."""
 
         expected = {'test': 'test'}
 
