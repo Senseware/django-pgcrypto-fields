@@ -122,6 +122,11 @@ class BooleanPGPSymmetricKeyField(PGPPublicKeyFieldMixin, models.BooleanField):
     cast_type = 'BOOL'
 
 
+class JSONPGPPublicKeyField(PGPPublicKeyFieldMixin, models.JSONField):
+    """JSON PGP public key encrypted field for postgres."""
+    encrypt_sql = PGP_PUB_ENCRYPT_SQL_WITH_NULLIF
+
+
 class DecimalPGPPublicKeyField(DecimalPGPFieldMixin,
                                PGPPublicKeyFieldMixin, models.DecimalField):
     """Decimal PGP public key encrypted field for postgres."""
